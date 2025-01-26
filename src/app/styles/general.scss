@@ -50,3 +50,11 @@
   .page {
     padding-block: var(--spacing-vertical-large);
   }
+
+  .nextjs-toast.nextjs-toast-errors-parent.nextjs-error-with-static {
+    display: none !important;
+  }
+  
+  nextjs-portal {
+    display: none;
+  }

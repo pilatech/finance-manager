@@ -49,4 +49,14 @@
             color: red;
         }
     }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .button {
+            margin-top: 0;
+        }
+    }
 }

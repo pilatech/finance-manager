@@ -3,9 +3,15 @@ export const financeReducer = (state: any, action: any) => {
         // add into database
         // then get back the fresh content
         // set state to that
+        const newAccounts = state.accounts.map(account => {
+            return {...account}
+        })
+        const newTransactions = state.transactions.map(transaction => {
+            return {...transaction}
+        })
         return {
-            accounts: [...state.accounts, ...action.payLoad],
-            transactions: [...state.transactions]
+            accounts: [...newAccounts, action.payload],
+            transactions: newTransactions
         }
     } else if (action.type === 'edit_account') {
         // replace identified account details
@@ -14,7 +20,7 @@ export const financeReducer = (state: any, action: any) => {
 
         const newAccounts = state.accounts.map((account: any) => {
             if (account.id === action.payload.id) {
-                return {...action.payload}
+                return { ...action.payload}
             } else {
                 return {...account}
             }
@@ -29,13 +35,27 @@ export const financeReducer = (state: any, action: any) => {
         // get the new data
         // set the state to that
         // -------Need to delete all transactions
+        const newAccounts = state.accounts.map(account => {
+            return {...account}
+        })
+        const newTransactions = state.transactions.map(transaction => {
+            return {...transaction}
+        })
+
+        console.log({
+            account: newAccounts,
+            transactions: newTransactions
+        })
+
+        const filteredAccounts = newAccounts.filter((account: any) => {
+            return (
+                account.id !== action.payload.id
+            )
+        })
+
         return {
-            accounts: state.accounts.filter((account: any) => {
-                return (
-                    account.id === action.payload.id
-                )
-            }),
-            transactions: [...state.transactions]
+            accounts: filteredAccounts,
+            transactions: newTransactions
         }
 
     } else {

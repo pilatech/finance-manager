@@ -1,16 +1,20 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useContext } from 'react'
 import { FinanceContext } from '../Store/FinanceContext'
 import AccountAmount from './account/AccountAmount';
 import NetBalance from './NetBalance';
 import { useRouter } from 'next/navigation';
+import AddAccountForm from './AddAccountForm';
+import AddTransactionForm from './AddTransactionForm';
 
 export default function Dashboard() {
 
   const financeData = useContext(FinanceContext);
   const router = useRouter();
+  const [ accountFormActive, setAccountFormActive ] = useState(false);
+  const [ transactFormActive, setTransactFormActive ] = useState(false);
 
   return (
     <main className="page" suppressHydrationWarning>
@@ -44,23 +48,12 @@ export default function Dashboard() {
                   )
                 })
               }
-              <div className="button button--add-account">+</div> 
-              <form className="form form--add">
-              <div className="form__content-container">
-                    <div className="form__fields form__account-name">
-                      <label htmlFor="account-name" className="form__label">Account Name</label>
-                      <input type="text" id='account-name' className="form__input" />
-                    </div>
-                    <div className="form__fields form__piggy">
-                      <p className="input__label">Piggy</p>
-                    <label className="switch">
-                      <input type="checkbox"/>
-                      <span className="slider round"></span>
-                    </label>
-                    </div>
-                    </div>
-                    <button className="btn">Save</button>
-                  </form>
+              <div onClick={() => {
+                setAccountFormActive(!accountFormActive);
+              }} className="button button--add-account" >+</div> 
+              {
+                accountFormActive && <AddAccountForm setFormActive={setAccountFormActive}/>
+              }
             </div>
             <div className="summary">
               <NetBalance amount={financeData.state.transactions.reduce((acc, curr) => {
@@ -88,35 +81,11 @@ export default function Dashboard() {
                       )
                     })
                   }
-                <div className="button button--add-transaction">+</div> 
-                <form className="form form--add">
-                  <div className="form__content-container">
-                    <div className="form__fields">
-                      <label htmlFor="transaction-name" className="form__label">Transaction</label>
-                      <input type="text" id='transaction-name' className="form__input" />
-                    </div>
-                    <div className="form__fields form__amount">
-                      <label htmlFor="amount" className="form__label">Amount</label>
-                      <input type="text" id='amount' className="form__input" />
-                    </div>
-                    <div className="form__fields form__type">
-                      <label htmlFor="type" className="form__label">Type</label>
-                      <select  id='type' className="form__input">
-                        <option value="#">Income</option>
-                        <option value="#">Expenditure</option>
-                      </select>
-                    </div>
-                    <div className="form__fields form__account">
-                      <label htmlFor="account" className="form__label ">Account</label>
-                      <select  id='account' className="form__input" >
-                          <option value="#">Main Account</option>
-                          <option value="#">Agric Supplies</option>
-                          <option value="#">Car Savings</option>
-                      </select>
-                    </div>
-                  </div>
-                  <button className="btn">Save</button>
-                </form>
+                <div className="button button--add-transaction"
+                onClick={() => {
+                  setTransactFormActive(!transactFormActive);
+                }}>+</div> 
+                { transactFormActive && <AddTransactionForm/>}
               </div>
             </div>
           </div>
