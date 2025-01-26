@@ -19,7 +19,6 @@ export default function AddAccountForm( { setFormActive }) {
             ...account,
             [e.target.name]: e.target.value
         })
-        console.log(account)
     }
 
     function handleCheckbox(e) {

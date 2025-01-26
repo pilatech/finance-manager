@@ -2,16 +2,23 @@
 
 import React from 'react';
 import Link from 'next/link';
-import  { usePathname } from 'next/navigation';
+import  { usePathname, useRouter } from 'next/navigation';
 
 export default function Navigation() {
+  const router = useRouter()
     const pathname = usePathname();
    const pathArr = pathname.split('/')
    let menu;
     if (pathname === '/dashboard' || pathArr.includes('account')) {
         menu = <ul className="navigation__menu">
         <li><Link href="/dashboard" className="navigation__link">Dashboard</Link></li>
-        <li><Link href="/logout" className="navigation__link">Logout</Link></li>
+        <li><p className="navigation__link" style={{
+          marginBottom: 0,
+          cursor: 'pointer'
+        }} onClick={e => {
+          e.preventDefault();
+          router.push('/login');
+        }}>Logout</p></li>
         </ul>
     } else {
         menu = <ul className="navigation__menu">

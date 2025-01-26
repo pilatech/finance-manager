@@ -56,7 +56,9 @@ const { accountId } = useParams();
                 </article>
               <div className="transactions transactions--single">
               {
-                    [...financeData.state.transactions].toReversed().map(transaction => {
+                    financeData.state.transactions.filter(transaction => {
+                      return (transaction.accId === accountId)
+                    }).map(( transaction )=> {
                       return (
                         <SingleTransaction key={transaction.id} transaction={transaction}/>
                       )

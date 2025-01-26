@@ -85,7 +85,7 @@ export default function Dashboard() {
                 onClick={() => {
                   setTransactFormActive(!transactFormActive);
                 }}>+</div> 
-                { transactFormActive && <AddTransactionForm/>}
+                { transactFormActive && <AddTransactionForm setFormActive={setTransactFormActive}/>}
               </div>
             </div>
           </div>

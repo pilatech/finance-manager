@@ -1,6 +1,10 @@
+"use client"
+
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export default function SignUp() {
+    const router = useRouter()
  return (
     <main className="page">
         <div className="container">
@@ -18,7 +22,7 @@ export default function SignUp() {
                     <input type="password" id="password1" name="password1" className="form__input" />
                 </div>
                 <div className="form__fields">
-                    <button className="btn btn--primary">Login</button>
+                    <button className="btn btn--primary" onClick={() => router.push('/dashboard')}>Login</button>
                 </div>
              </div>
         </div>

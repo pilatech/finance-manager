@@ -42,11 +42,6 @@ export const financeReducer = (state: any, action: any) => {
             return {...transaction}
         })
 
-        console.log({
-            account: newAccounts,
-            transactions: newTransactions
-        })
-
         const filteredAccounts = newAccounts.filter((account: any) => {
             return (
                 account.id !== action.payload.id
@@ -58,6 +53,54 @@ export const financeReducer = (state: any, action: any) => {
             transactions: newTransactions
         }
 
+    } else if (action.type === 'add_transaction'){
+        const newAccounts = state.accounts.map(account => {
+            return {...account}
+        })
+        const newTransactions = state.transactions.map(transaction => {
+            return {...transaction}
+        })
+        return {
+            accounts: newAccounts,
+            transactions: [...newTransactions, action.payload]
+        }
+    } else if (action.type === 'delete_transaction') {
+
+        const newAccounts = state.accounts.map(account => {
+            return {...account}
+        })
+        const newTransactions = state.transactions.map(transaction => {
+            return {...transaction}
+        })
+
+        const filteredTransactions = newTransactions.filter((transaction: any) => {
+            return (
+                transaction.id !== action.payload.id
+            )
+        })
+
+        return {
+            accounts: newAccounts,
+            transactions: filteredTransactions
+        }
+    }  else if (action.type === 'edit_transaction') {
+        const newAccounts = state.accounts.map(account => {
+            return {...account}
+        })
+        const newTransactions = state.transactions.map(transaction => {
+            return {...transaction}
+        })
+
+       const foundIndex = newTransactions.findIndex(transaction => {
+        return transaction.id === action.payload.id;
+       })
+
+       console.log(foundIndex)
+
+
+        return {
+            accounts: newAccounts,
+        }
     } else {
         throw Error('Unknown operations')
     }
