@@ -1,0 +1,82 @@
+.summary {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary__worth {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-secondary);
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--secondary-green);
+
+    em {
+        font-size: 1.5rem;
+        font-style: normal;
+        font-family: var(--font-primary);
+        align-self: flex-end;
+        color: initial;
+    }
+} 
+
+.summary__title {
+    margin-top: 3rem;
+    font-size: 2rem;
+}
+
+.transaction {
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+
+    &__main {
+
+    }
+    &__name {}
+    &__date {
+        font-size: .8rem;
+        margin: 0;
+    }
+    &__summary {
+    
+    }
+    &__amount {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+}
+
+.button {
+    cursor: pointer;
+    border-radius: 50%;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: var(--secondary-green);
+    box-shadow: 0 0 25px rgba(0, 0, 0, .2);
+
+    &--add-transaction {
+        width: 2rem;
+        height: 2rem;
+        font-size: 2rem;
+
+    }
+
+    &--add-account {
+        width: 3rem;
+        height: 3rem;
+        font-size: 3rem;
+    }
+}
+

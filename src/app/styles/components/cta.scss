@@ -1,0 +1,22 @@
+.cta {
+    &__box {
+        margin-top: 3rem;
+        display: flex;
+        max-width: 850px;
+        margin-inline: auto;
+        background: #41aa6818;
+        border-radius: 24px;
+        padding: 3rem;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__text {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+    &__link {
+        background: var(--primary-yellow);
+        padding: 8px 1.5rem;
+        border-radius: 6px;
+    }
+}

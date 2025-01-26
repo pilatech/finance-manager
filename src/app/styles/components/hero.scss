@@ -1,0 +1,23 @@
+.hero {
+    background: rgba(0, 0, 0, .05);
+    padding-block: var(--spacing-vertical-large);
+
+    &--light {
+        background: initial;
+    }
+
+    &__box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__text-box {
+        width: 48%;
+    }
+
+    &__image {
+        width: 48%;
+    }
+}
+
